@@ -7,6 +7,6 @@ Records are retreived by two URL parameters: "type" and "ID". "type" can be 'cod
 
 Example:
 
-[githubname].io/cityview/details.html?type=code&ID=467
+[githubname].github.io/cityview/details.html?type=code&ID=467
 
 Displays a records from the Code Enforcement CKAN resource with an "_id" of 456.
