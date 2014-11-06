@@ -33,12 +33,21 @@
       <div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-  <div class="container">
+<div class="container">
+<input id="search" type="text" placeholder="Search"></input>
+<button onclick="search()">Search</button>
+<div id="link"><a href="http://www.civicdata.com/datastore/dump/2691aff1-e555-48d3-9188-aebf1fa8323e">Download the Data</a></div>
+<div class="table-responsive">
+<div id="table"></div>
+</div>
   </div>
     <!-- Bootstrap core JavaScript -->
+
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/search.js"></script>
+    <script>$(document).ready(search);</script>
     </body>
 </html>

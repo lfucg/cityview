@@ -16,13 +16,9 @@ function getDetails()
           dataType: 'jsonp',
           success: function(data) {
           $.each(data.result.records, function(key, property){
-          
-          $("#title").html('<h1>' + property.Address.Clean() + '</h1><h3>Permit</h3>')
-          
-          $("#details").html('<ul class="permit"><li><b>Permit ID:</b> ' + property.ID + '</li><li><b>Date:</b> ' + property.Date.FormatDate('/') + '</li><li><b>Address:</b> ' + property.Address.ProperCase(0) + ' ' + property.Suite.ProperCase(0) + '</li>  <li><b>Permit Type:</b> ' + property.PermitType.ProperCase(0) + '</li><li><b>Construction Cost: </b>' + CurrencyFormat(property.ConstructionCost) + '</li>  <li><b>Owner:</b> ' + property.OwnerName.ProperCase(1) + '</li><li><b>Contractor:</b> ' + property.Contractor.ProperCase(1) + '</li></ul><p>If you have questions or concerns about this building permit please contact the Division of Building Inspection at (859) 258-3770.</p><p>Addresses and  map locations are approximate.</p>')    
-          
-          $("#map").html('<iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + property.Address.Clean() + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>')
-                   
+          $("#title").html('<h1>' + AddressClean(property.Address) + '</h1><h3>Permit</h3>')
+          $("#details").html('<ul class="permit"><li><b>Permit ID:</b> ' + property.ID + '</li><li><b>Date:</b> ' + FormatDate(property.Date) + '</li><li><b>Address:</b> ' + AddressProper(property.Address) + ' ' + ProperCase(property.Suite) + '</li>  <li><b>Permit Type:</b> ' + ProperCase(property.PermitType) + '</li><li><b>Construction Cost: </b>' + FormatCurrency(property.ConstructionCost) + '</li>  <li><b>Owner:</b> ' + ProperCase(property.OwnerName) + '</li><li><b>Contractor:</b> ' + ProperCase(property.Contractor) + '</li></ul><p>If you have questions or concerns about this building permit please contact the Division of Building Inspection at (859) 258-3770.</p><p>Addresses and  map locations are approximate.</p>')    
+          $("#map").html('<iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>')      
           });
           }
         })} 
@@ -37,69 +33,63 @@ function getDetails()
           dataType: 'jsonp',
           success: function(data) {
           $.each(data.result.records, function(key, property){
-          
-          $("#title").html('<h1>' + property.Address.Clean()+ '</h1><h3>Code Enforcement Case</h3>')
-          
-          $("#details").html('<ul class="permit"><li><b>Case No:</b> ' + property.CaseNo + '</li><li><b>Date Opened:</b> ' + property.DateOpened.FormatDate('/') + '</li><li><b>Address:</b> ' + property.Address.ProperCase(0) + '</li>  <li><b>Case Type:</b> ' + property.CaseType.ProperCase(1) + '</li><li><b>Status:</b> The status of this case was updated to ' + property.Status.toLowerCase() + ' on ' + property.StatusDate.FormatDate('/') + '.</li></ul><p>If you have questions or concerns about this code enforcement case please contact the Division of Code Enforcement at (859) 425-2255.</p><p>Addresses and  map locations are approximate.</p>')    
-          
-          $("#map").html('<iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + property.Address.Clean() + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>')
-                   
+          $("#title").html('<h1>' + AddressClean(property.Address)+ '</h1><h3>Code Enforcement Case</h3>')
+          $("#details").html('<ul class="permit"><li><b>Case No:</b> ' + property.CaseNo + '</li><li><b>Date Opened:</b> ' + FormatDate(property.DateOpened) + '</li><li><b>Address:</b> ' + AddressProper(property.Address) + '</li>  <li><b>Case Type:</b> ' + ProperCase(property.CaseType) + '</li><li><b>Status:</b> The status of this case was updated to ' + property.Status.toLowerCase() + ' on ' + FormatDate(property.StatusDate) + '.</li></ul><p>If you have questions or concerns about this code enforcement case please contact the Division of Code Enforcement at (859) 425-2255.</p><p>Addresses and  map locations are approximate.</p>')    
+          $("#map").html('<iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>')         
           });
           }
         })}
-    else{}    
+    else{
+      $("#title").html('<h1>Uh Oh...</h1>');
+      $("#details").html("<h3>The dataset you have selected does not exist.</h3>");
+    }    
     }
 
-function getUrlParameter(sParam)
+function getUrlParameter(sParam){
+var sPageURL = window.location.search.substring(1);
+var sURLVariables = sPageURL.split('&');
+for (var i = 0; i < sURLVariables.length; i++) 
 {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) 
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) 
-        {
-            return sParameterName[1];
-        }
-    }
+var sParameterName = sURLVariables[i].split('=');
+if (sParameterName[0] == sParam) 
+   {return sParameterName[1];}}}
+
+function AddressClean(input){
+var clean =  input.toLowerCase().replace(/#.*$/,'').replace(/\(.*$/,'').replace(/\(.*$/,'').replace(/\bmh\b.*$/,'').replace(/\b(exterior|interior|roof)\b.*$/,'').replace(/-[0-9]*(?=\s)/,'').trim();
+return $.map(clean.toLowerCase().split(' '), function( v, i ) {
+if (v.match(/\b(i|ii|iii|iv|v|vi|vii|viii|ix)\b/i) !== null){return v.toUpperCase();} 
+else if (v.match(/\b(and|if|of)\b/i) !== null){return v.toLowerCase();} 
+else {return v.replace(v.charAt(0),v.charAt(0).toUpperCase());}
+}).join(" ")
 }
 
-function CurrencyFormat (number){
-if (number) {
-var rounded = Math.round(number) 
+function AddressProper(input){
+var clean =  input.toLowerCase().trim();
+return $.map(clean.toLowerCase().split(' '), function( v, i ) {
+if (v.match(/\b(i|ii|iii|iv|v|vi|vii|viii|ix)\b/i) !== null){return v.toUpperCase();} 
+else if (v.match(/\b(and|if|of)\b/i) !== null){return v.toLowerCase();} 
+else {return v.replace(v.charAt(0),v.charAt(0).toUpperCase());}
+}).join(" ")
+}
+
+function ProperCase (input) {
+var bigwords = /\b(aka|llc|hvac|n\/c|^[b-df-hj-np-tv-z]{3,}|i|ii|iii|iv|v|vi|vii|viii|ix)\b/i;
+var smallwords = /\b(an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|to|vs)\b/i;
+return $.map(input.toLowerCase().split(' '), function( v, i ) {
+if (v.match(bigwords) !== null){return v.toUpperCase();} 
+else if (v.match(smallwords) !== null){return v.toLowerCase();} 
+else {return v.replace(v.charAt(0),v.charAt(0).toUpperCase());}
+}).join(" ")};
+
+function FormatDate (input){
+var year = input.split('-')[0];
+var month = input.split('-')[1].replace(/^0/, '');
+var day = input.split('-')[2].replace(/^0/, '');
+return month + '/' + day + '/' + year;
+};
+
+function FormatCurrency (input){ 
+if (input && $.isNumeric(input) === true) {
+var rounded = Math.round(input)
 return '$' + rounded.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-}
-else {return '$0'}  
-};
-
-String.prototype.ProperCase = function(mode) {
-if (mode === 0) {var bigwords = /\b(llc|hvac|n\/c|i|ii|iii|iv|v|vi|vii|viii|ix)\b/i;}  
-else {var bigwords = /\b(llc|hvac|n\/c|[b-df-hj-np-tv-z]+|i|ii|iii|iv|v|vi|vii|viii|ix)\b/i;}
-var smallwords = /\b(and|if|of)\b/i;
-var abbrev = /\b()\b/i;
-var result = '';
-var oldstring = this.toLowerCase().split(' '); 
-var newstring = $.map(oldstring, function( v, i ) {
-if (v.match(bigwords) !== null){
-result = v.toUpperCase();   
-} 
-else if (v.match(smallwords) !== null){
-result = v.toLowerCase();
-} 
-else {result = v.replace(v.charAt(0),v.charAt(0).toUpperCase());
-}
-return(result);
-});
-return newstring.join(" ");
-};
-
-String.prototype.Clean = function Clean(){
-return this.toLowerCase().replace(/#.*$/,'').replace(/\(.*$/,'').replace(/\(.*$/,'').replace(/\bmh\b.*$/,'').replace(/\b(exterior|interior|roof)\b.*$/,'').replace(/-[0-9]*(?=\s)/,'').trim().ProperCase(0);
-    }
-
-String.prototype.FormatDate = function FormatDate(separator){
-var year = this.split('-')[0];
-var month = this.split('-')[1].replace(/^0/, '');
-var day = this.split('-')[2].replace(/^0/, '');
-return month + separator + day + separator + year;
-};
+} else {return '$0'}};

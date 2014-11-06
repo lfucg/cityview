@@ -1,7 +1,11 @@
    h1 {
       color: #0259a7;
     }
-       .permit {
+    #link {
+      margin-top: 1.4em;
+      margin-bottom: 1.4em;
+    }
+    .permit {
       list-style-type: none;
       padding: 0
     }
