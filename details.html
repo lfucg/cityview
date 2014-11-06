@@ -34,11 +34,18 @@
   </div><!-- /.container-fluid -->
 </nav>
   <div class="container">
+  <div id="title"></div>  
+  <div class="row">
+    <div class="col-md-4" id="details"></div>
+    <div class="col-md-4" id="map"></div>
+  </div>
   </div>
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/details.js"></script>
+    <script>$(document).ready(getDetails);</script>  
     </body>
 </html>

@@ -1,0 +1,10 @@
+   h1 {
+      color: #0259a7;
+    }
+       .permit {
+      list-style-type: none;
+      padding: 0
+    }
+    .permit li{
+      line-height: 1.4em;
+    }
