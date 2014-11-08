@@ -16,9 +16,9 @@ function getDetails()
           dataType: 'jsonp',
           success: function(data) {
           $.each(data.result.records, function(key, property){
-          $("#title").html('<h1>' + AddressClean(property.Address) + '</h1><h3>Permit</h3>')
-          $("#details").html('<ul class="permit"><li><b>Permit ID:</b> ' + property.ID + '</li><li><b>Date:</b> ' + FormatDate(property.Date) + '</li><li><b>Address:</b> ' + AddressProper(property.Address) + ' ' + ProperCase(property.Suite) + '</li>  <li><b>Permit Type:</b> ' + ProperCase(property.PermitType) + '</li><li><b>Construction Cost: </b>' + FormatCurrency(property.ConstructionCost) + '</li>  <li><b>Owner:</b> ' + ProperCase(property.OwnerName) + '</li><li><b>Contractor:</b> ' + ProperCase(property.Contractor) + '</li></ul><p>If you have questions or concerns about this building permit please contact the Division of Building Inspection at (859) 258-3770.</p><p>Addresses and  map locations are approximate.</p>')    
-          $("#map").html('<iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>')      
+          $("#record").append('<div id="content" class="col-md-4"><h1>' + AddressClean(property.Address) + '</h1><h3>Permit</h3><ul class="permit"><li><b>Permit ID:</b> ' + property.ID + '</li><li><b>Date:</b> ' + FormatDate(property.Date) + '</li><li><b>Address:</b> ' + AddressProper(property.Address) + ' ' + ProperCase(property.Suite) + '</li>  <li><b>Permit Type:</b> ' + ProperCase(property.PermitType) + '</li><li><b>Construction Cost: </b>' + FormatCurrency(property.ConstructionCost) + '</li>  <li><b>Owner:</b> ' + ProperCase(property.OwnerName) + '</li><li><b>Contractor:</b> ' + ProperCase(property.Contractor) + '</li></ul></div>')    
+          $("#record").append('<div id="map" class="col-md-8"><iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe><div>')
+	  $("#record").append('<div id="meta" class="col-md-12"><h3>About the Data</h3><p>Permits are issued by the Division of Building Inspection and the Division of Planning for a variety of activities including construction and certification of compliance with zoning. The permit information above is submitted by the applicant.</p><p>If you have questions or concerns about permits, please contact the the Division of Building Inspection at (859) 425-2255.</p><p>Addresses and map locations are approximate. No warranties, expressed or implied, are provided with this information.</p></div>')      
           });
           }
         })} 
@@ -33,10 +33,11 @@ function getDetails()
           dataType: 'jsonp',
           success: function(data) {
           $.each(data.result.records, function(key, property){
-          $("#title").html('<h1>' + AddressClean(property.Address)+ '</h1><h3>Code Enforcement Case</h3>')
-          $("#details").html('<ul class="permit"><li><b>Case No:</b> ' + property.CaseNo + '</li><li><b>Date Opened:</b> ' + FormatDate(property.DateOpened) + '</li><li><b>Address:</b> ' + AddressProper(property.Address) + '</li>  <li><b>Case Type:</b> ' + ProperCase(property.CaseType) + '</li><li><b>Status:</b> The status of this case was updated to ' + property.Status.toLowerCase() + ' on ' + FormatDate(property.StatusDate) + '.</li></ul><p>If you have questions or concerns about this code enforcement case please contact the Division of Code Enforcement at (859) 425-2255.</p><p>Addresses and  map locations are approximate.</p>')    
-          $("#map").html('<iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>')         
-          });
+          $("#record").append('<div id="content" class="col-md-4"><h1>' + AddressClean(property.Address)+ '</h1><h3>Code Enforcement Case</h3><ul class="permit"><li><b>Case No:</b> ' + property.CaseNo + '</li><li><b>Date Opened:</b> ' + FormatDate(property.DateOpened) + '</li><li><b>Address:</b> ' + AddressProper(property.Address) + '</li>  <li><b>Case Type:</b> ' + ProperCase(property.CaseType) + '</li><li><b>Status:</b> The status of this case was updated to ' + property.Status.toLowerCase() + ' on ' + FormatDate(property.StatusDate) + '.</li></ul></div>')    
+          $("#record").append('<div id="map" class="col-md-8"><iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe></div>')         
+	  $("#record").append('<div id="meta" class="col-md-12"><h3>About the Data</h3><p>Code enforcement cases are opened based on citizen complaints for violations of nuisance code, the International Property Maintenance Code, and sidewalk regulations.</p><p>If you have questions or concerns about code enforcement cases, please contact the the Division of Code Enforcement at (859) 425-2255.</p><p>Addresses and map locations are approximate. No warranties, expressed or implied, are provided with this information.</p></div>')      
+          });          
+});
           }
         })}
     else{
