@@ -54,6 +54,12 @@ body {
 
 }
 
+#searchbox h1 {
+  font-weight: 700;
+  margin-top:0px;
+
+}
+
  #link {
       margin-top: 1.4em;
       margin-bottom: 1.4em;
