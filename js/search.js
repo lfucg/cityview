@@ -11,7 +11,7 @@ $.ajax({
     dataType: 'jsonp',
     success: function(data) {
       
-      $("#table").html('<table class="table table-striped"><thead><tr><th>Date</th><th>Address</th><th>Permit Type</th><th>Construction Cost</th><th>Owner</th><th>Contractor</th><th>More Info</th><tr></thead><tbody id="tablebody"></tbody></table>');
+      $("#table").html('<table class="table table-striped"><thead><tr><th>View Permit</th><th>Date</th><th>Address</th><th>Permit Type</th><th>Construction Cost</th><th>Owner</th><th>Contractor</th><tr></thead><tbody id="tablebody"></tbody></table>');
       
       $.each(data.result.records, function(key, property){
       $("#tablebody").append('<tr><td><a href="details.html?type=permit&ID=' + property._id +'">View Permit</a></td><td>' + FormatDate(property.Date) + '</td><td>' + AddressClean(property.Address) + ' '+ ProperCase(property.Suite) + '</td><td>' + ProperCase(property.PermitType) + '</td><td>' + FormatCurrency(property.ConstructionCost) + '</td><td>' + ProperCase(property.OwnerName) + '</td><td>' + ProperCase(property.Contractor) + '</td></tr>')});     
