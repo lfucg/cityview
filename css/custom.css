@@ -40,3 +40,17 @@ body {
   margin-top:0px;
 
 }
+
+ #link {
+      margin-top: 1.4em;
+      margin-bottom: 1.4em;
+}
+
+.permit {
+      list-style-type: none;
+      padding: 0
+    }
+
+.permit li{
+      line-height: 1.4em;
+}
