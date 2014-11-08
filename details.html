@@ -4,45 +4,71 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Planning, Preservation, and Development - Data Browser</title>
+    <title>StatusLex</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:700,400' rel='stylesheet'>
+    <link href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet'>    
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button><h1>Status<span class="span">Lex</span></h1><h4>City of Lexington, Kentucky</h4>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#">About StatusLex</a></li>
-        <li><a href="#">Permits</a></li>
-        <li><a href="#">Code Enforcement Cases</a></li>
-       </ul>
-      <div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
   <div class="container">
-  <div id="title"></div>  
-  <div class="row">
-    <div class="col-md-4" id="details"></div>
-    <div class="col-md-4" id="map"></div>
-  </div>
-  </div>
+<!-- Fixed navbar -->
+  <nav id= "mainnav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div id = "customnav" class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#home"><i class="fa fa-database"></i> StatusLex</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#about">About StatusLex</a></li>
+            <li class="dropdown">
+              <a href="#drop" class="dropdown-toggle" data-toggle="dropdown">Select a Topic<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="#code">Code Enforcement</a></li>
+                <li><a href="#bi">Building Permits</a></li>
+              </ul>
+            </li>
+          </ul>
+               </ul>
+        </div><!--/.nav-collapse -->
+</nav>
+ <div id ="record">
+ <div id="content" class="col-md-4">
+ <h1>232 Taylor Drive</h1>
+ <h3>Permit</h3>  
+ <b>Permit ID: </b>183908<br>
+ <b>Date: </b>7/8/2014<br>
+ <b>Address: </b>232 Taylor Dr<br>
+ <b>Permit Type: </b>Fence, Residential<br>
+ <b>Construction Cost: </b>$1,400<br>
+ <b>Owner: </b>Jonathan Hollinger<br>
+ <b>Contractor: </b>Jonathan Hollinger<br>
+ </div>
+ 
+ <div id="map" class="col-md-8">
+        <iframe width="100%" height="300px" frameborder="0" style="border:0;" src="https://www.google.com/maps/embed/v1/place?q=232 taylor drive Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe>
+ </div>
+ 
+<div id="meta" class="col-md-12">
+        <h3>About the Data</h3>
+        <p>Permits are issued by the Division of Building Inspection and the Division of Planning for a variety of activities including construction and certification of compliance with zoning. Construction cost is submitted by the applicant.</p>
+        <p>Please contact the the Division of Building Inspection at (859) 425-2255 for more information about permits.</p>
+        <p>Addresses and map locations are approximate.</p>
+</div>
+  
+</div>
+</div>
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></script>
