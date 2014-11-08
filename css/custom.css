@@ -67,3 +67,8 @@ body {
 .permit li{
       line-height: 1.4em;
 }
+
+#searcharea {
+  padding-left: 15px;
+  padding-right: 15px;
+}
