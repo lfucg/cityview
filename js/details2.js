@@ -43,8 +43,9 @@ $.ajax({
           else if (value.formatter === 'proper'){item = ProperCase(property[key])}
           else if (value.formatter === 'currency'){item = FormatCurrency(property[key])}
           else {item = property[key]}  
-          $('#content').append('<b>' + value.title + ':</b> '+ item + '<br>')})
-	  $('#record').html('<div id="meta" class="col-md-12">' + meta + '</div>')          
+          $('#content').append('<b>' + value.title + ':</b> '+ item + '<br>')
+          })
+	  $('#record').append('<div id="meta" class="col-md-12">' + meta + '</div>')          
         
 })
           }});
