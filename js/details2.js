@@ -4,7 +4,8 @@ function getDetails()
 {
 var type = 'Permit'
 var titlefield = 'Address'
-var meta = '<p>If you have questions or concerns about this permit, please contact the Division of Building Inspection at (859) 425-2255.</p><p>Addresses and map locations are approximate.</p>'
+var mapfield = 'Address'
+var meta = '<h3>About the Data</h3><p>Permits are issued by the Division of Building Inspection and the Division of Planning for a variety of activities including construction and certification of compliance with zoning. The permit information above is submitted by the applicant.</p><p>If you have questions or concerns about permits, please contact the the Division of Building Inspection at (859) 425-2255.</p><p>Addresses and map locations are approximate. No warranties, expressed or implied, are provided with this information.</p>'
 var resource = '2691aff1-e555-48d3-9188-aebf1fa8323e'
 var config  = {
  "ID" : 
@@ -45,7 +46,7 @@ $.ajax({
           else {item = property[key]}  
           $('#content').append('<b>' + value.title + ':</b> '+ item + '<br>')
           })
- 	  $("#record").append('<div id="map" class="col-md-8"><iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe></div>')
+ 	  $("#record").append('<div id="map" class="col-md-8"><iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property[mapfield]) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe></div>')
 	  $('#record').append('<div id="meta" class="col-md-12">' + meta + '</div>')          
         
 })
