@@ -35,7 +35,7 @@ $.ajax({
           dataType: 'jsonp',
           success: function(data) {
           $.each(data.result.records, function(index, property){
-          $('#record').html('<div id="content" class="col-md-4"><h1>' + AddressClean(property[titlefield]) + '</h1><h3>' + type + '</h3><ul id="infolist"></ul></div>'  )
+          $('#record').html('<div id="content" class="col-md-4"><h1>' + AddressClean(property[titlefield]) + '</h1><h3>' + type + '</h3><ul class="infolist"></ul></div>'  )
           $.each(config, function(key, value){
           var item = ''
           if (value.formatter === 'clean'){item = AddressClean(property[key])}
@@ -44,7 +44,7 @@ $.ajax({
           else if (value.formatter === 'proper'){item = ProperCase(property[key])}
           else if (value.formatter === 'currency'){item = FormatCurrency(property[key])}
           else {item = property[key]}  
-          $('#infolist').append('<li><b>' + value.title + ':</b> '+ item + '</li>')
+          $('.infolist').append('<li><b>' + value.title + ':</b> '+ item + '</li>')
           })
  	  $("#record").append('<div id="map" class="col-md-8"><iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property[mapfield]) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe></div>')
 	  $('#record').append('<div id="meta" class="col-md-12">' + meta + '</div>')          
