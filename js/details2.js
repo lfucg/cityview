@@ -44,9 +44,9 @@ $.ajax({
           else if (value.formatter === 'currency'){item = FormatCurrency(property[key])}
           else {item = property[key]}  
           $('#content').append('<b>' + value.title + ':</b> '+ item + '<br>')})
-          })
           $("#record").append('<div id="map" class="col-md-8"><iframe width="100%" height="300px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + AddressClean(property.Address) + ' Lexington KY United States &key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ"></iframe><div>')
-          $('#record').html('<div id="meta" class="col-md-12">' + meta + '</div>')
+          $('#record').html('<div id="meta" class="col-md-12">' + meta + '</div>')          
+})
           }});
 }
 
