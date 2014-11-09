@@ -10,15 +10,15 @@ var config  = {
  "ID" : 
    {"title" : "Permit ID", "formatter" : "none"},
  "Date" : 
-   {"title" : "Date", "formatter" : "Date"},
+   {"title" : "Date", "formatter" : "date"},
  "Address" :
-   {"title" : "Address", "formatter" : "Address"},
+   {"title" : "Address", "formatter" : "address"},
  "Suite" :
-   {"title" : "Suite", "formatter" : "Proper"},
+   {"title" : "Suite", "formatter" : "proper"},
  "PermitType" :
-   {"title" : "Permit Type", "formatter" : "Proper"},
+   {"title" : "Permit Type", "formatter" : "proper"},
   "ConstructionCost" :
-   {"title" : "Construction Cost", "formatter" : "None"}, 
+   {"title" : "Construction Cost", "formatter" : "Currency"}, 
   "OwnerName" :
    {"title" : "Owner", "formatter" : "Proper"},
    "Contractor" :
