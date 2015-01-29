@@ -1,14 +1,75 @@
-   h1 {
-      color: #0259a7;
-    }
-    #link {
+body {
+  font-family: 'Raleway', San Serif;
+}
+
+#mainnav {
+  background-color: #FFF;
+  border: none;
+}
+
+#customnav a {
+  font-weight: 700;
+  color: #0259A7;
+  height: 1.5em;
+}
+
+.logobig {
+  font-size: 3.5em;
+  font-weight: 700;
+  color: #0259A7;
+  height: 1.5em;
+}
+
+.logosmall {
+  font-size: 2.75em;
+  font-weight: 700;
+  color: #0259A7;
+  height: 1.5em;
+}
+
+#navbar a {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 400;
+  color: #888888;
+  margin-left: 20px;
+  line-height: 2.75em;
+}
+
+#navbar a:link, a:visited {
+  color: #888888;
+}
+
+#navbar a:hover {
+  color: #303030;
+}
+
+#navbar a:active {
+  color: red;
+}
+
+#content h1 {
+  font-weight: 700;
+  margin-top:0px;
+
+}
+
+#searchbox h1 {
+  font-weight: 700;
+  margin-top:0px;
+
+}
+
+ #link {
       margin-top: 1.4em;
       margin-bottom: 1.4em;
-    }
-    .permit {
+}
+
+.permit {
       list-style-type: none;
       padding: 0
     }
-    .permit li{
+
+.permit li{
       line-height: 1.4em;
-    }
+}
