@@ -9,4 +9,6 @@ Example:
 
 [githubname].github.io/statuslex/details.html?type=code&ID=467
 
-Displays a records from the Code Enforcement CKAN resource with an "_id" of 456.
+Displays a records from the Code Enforcement CKAN resource with an "_id" of 467.
+
+Additional datasets will be added in the future.
