@@ -1,12 +1,12 @@
 /*Created by Jonathan Hollinger, 2014. Use and modify freely at your own risk.*/
-
+//
 function getDetails()
     {
     var dataset = getUrlParameter('type')
     var idnum = getUrlParameter('ID')
 
     if (dataset == 'permit') { 
-      var fields = '"PermitID","DateOpened","Address","Status","StatusDate","PermitType","ConstructionCost","Contractor","TotalFees"'
+      var fields = '"PermitID","DateCreated","Address","Status","StatusDate","PermitType","ConstructionCost","Contractor","TotalFees"'
       var resource = '2691aff1-e555-48d3-9188-aebf1fa8323e'
       var params = {
           sql: 'SELECT' + fields + 'FROM"' + resource + '"WHERE"_id"=' + idnum};
