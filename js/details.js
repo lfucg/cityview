@@ -6,7 +6,7 @@ function getDetails()
     var idnum = getUrlParameter('ID')
 
     if (dataset == 'permit') { 
-      var fields = '"ID", "Date","Address","Suite","PermitType","ConstructionCost","OwnerName","Contractor"'
+      var fields = '"PermitID", "DateOpened","Address","Status","StatusDate",""PermitType","ConstructionCost","Contractor", "Total Fees"'
       var resource = '2691aff1-e555-48d3-9188-aebf1fa8323e'
       var params = {
           sql: 'SELECT' + fields + 'FROM"' + resource + '"WHERE"_id"=' + idnum};
